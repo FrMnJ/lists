@@ -96,3 +96,15 @@ func TestList_String(t *testing.T) {
 		t.Error("String must be (0)->(1)->(2)->(3)")
 	}
 }
+
+func TestList_RemoveNotFound(t *testing.T) {
+	list := lists.New[int]()
+	list.Add(0)
+	list.Add(1)
+	list.Add(2)
+	list.Add(3)
+	ok := list.Remove(4)
+	if ok {
+		t.Error("4 does not exists, ok must be false")
+	}
+}

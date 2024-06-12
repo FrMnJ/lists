@@ -81,7 +81,7 @@ func (l *List[T]) Insert(value T) {
 // If the Value is not found, return false
 // Otherwise, return true
 func (l *List[T]) Remove(value T) bool {
-	for iterator := l.sentinel.Next; iterator.Next != nil; iterator = iterator.Next {
+	for iterator := l.sentinel.Next; iterator != l.sentinel; iterator = iterator.Next {
 		if iterator.Value == value {
 			iterator.Next.Prev = iterator.Prev
 			iterator.Prev.Next = iterator.Next
